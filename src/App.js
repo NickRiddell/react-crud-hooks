@@ -16,6 +16,10 @@ const App = () => {
       setAdvisors([ ...advisors, advisor ])
     }
 
+    const deleteAdvisor = id => {
+      setAdvisors(advisors.filter(advisor => advisor.id !== id))
+    }
+
 		  return (
 		    <div className="container">
 		      <h1>CRUD App with Hooks</h1>
@@ -26,7 +30,7 @@ const App = () => {
 		        </div>
 		        <div className="flex-large">
 		          <h2>View advisors</h2>
-		          <AdvisorTable advisors={advisors} />
+		          <AdvisorTable advisors={advisors} deleteAdvisor={deleteAdvisor} />
 		        </div>
 		      </div>
 		    </div>

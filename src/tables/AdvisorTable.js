@@ -21,7 +21,12 @@ const AdvisorTable = props => (
             <td>{advisor.maxundergraduates}</td>
             <td>
               <button className="button muted-button">Edit</button>
-              <button className="button muted-button">Delete</button>
+              <button
+                onClick={() => props.deleteAdvisor(advisor.id)}
+                className="button muted-button"
+              >
+                Delete
+              </button>
             </td>
           </tr>
         ))
