@@ -1,0 +1,46 @@
+
+import React, { useState } from 'react'
+
+const EditAdvisorForm = props => {
+	const [ advisor, setAdvisor ] = useState(props.currentAdvisor)
+
+	const handleInputChange = event => {
+		const { name, value } = event.target
+
+		setAdvisor({ ...advisor, [name]: value })
+	}
+
+	return (
+		<form
+			onSubmit={event => {
+				event.preventDefault()
+
+				props.updateAdvisor(advisor.id, advisor)
+			}}
+		>
+			<label>Name</label>
+			<input type="text" name="name" value={advisor.name} onChange={handleInputChange} />
+			<label>Research Area</label>
+			<select name="researcharea" value={advisor.researcharea} onChange={handleInputChange} >
+				<option value="">Please select</option>
+			  <option value="Accounting and Finance">Accounting and Finance</option>
+			  <option value="Entrepreneurship and Innovation">Entrepreneurship and Innovation</option>
+			  <option value="Management Science and Business Economics">Management Science and Business Economics</option>
+			  <option value="Marketing">Marketing</option>
+				<option value="Organisation Studies">Organisation Studies</option>
+				<option value="Strategy">Strategy</option>
+			</select>
+			<label>Max Postgraduates</label>
+			<input type="number" name="maxpostgraduates" value={advisor.maxpostgraduates} onChange={handleInputChange} />
+			<label>Max Undergraduates</label>
+			<input type="number" name="maxundergraduates" value={advisor.maxundergraduates} onChange={handleInputChange} />
+			<button>Update advisor</button>
+      <button onClick={() => props.setEditing(false)} className="button muted-button">
+        Cancel
+      </button>
+
+		</form>
+	)
+}
+
+export default EditAdvisorForm

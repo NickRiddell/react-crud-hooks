@@ -20,7 +20,14 @@ const AdvisorTable = props => (
             <td>{advisor.maxpostgraduates}</td>
             <td>{advisor.maxundergraduates}</td>
             <td>
-              <button className="button muted-button">Edit</button>
+              <button
+                onClick={() => {
+                  props.editRow(advisor)
+                }}
+                className="button muted-button"
+              >
+                Edit
+              </button>
               <button
                 onClick={() => props.deleteAdvisor(advisor.id)}
                 className="button muted-button"
@@ -32,7 +39,7 @@ const AdvisorTable = props => (
         ))
       ) : (
         <tr>
-          <td colSpan={3}>No advisors</td>
+          <td colSpan={5}>No advisors</td>
         </tr>
       )}
     </tbody>
