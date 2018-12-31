@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AdvisorTable from './tables/AdvisorTable'
+import AddAdvisorForm from './forms/AddAdvisorForm'
 
 const App = () => {
   const advisorsData = [
@@ -8,7 +9,12 @@ const App = () => {
 			{ id: 3, name: 'Laura', researcharea: 'Management Science and Business Economics', maxpostgraduates: 8, maxundergraduates: 9 },
 	  ]
 
-		const [ advisors, setadvisors ] = useState(advisorsData)
+		const [ advisors, setAdvisors ] = useState(advisorsData)
+
+    const addAdvisor = advisor => {
+      advisor.id = advisors.length + 1
+      setAdvisors([ ...advisors, advisor ])
+    }
 
 		  return (
 		    <div className="container">
@@ -16,6 +22,7 @@ const App = () => {
 		      <div className="flex-row">
 		        <div className="flex-large">
 		          <h2>Add advisor</h2>
+              <AddAdvisorForm addAdvisor={addAdvisor} />
 		        </div>
 		        <div className="flex-large">
 		          <h2>View advisors</h2>
