@@ -1,8 +1,16 @@
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const EditAdvisorForm = props => {
 	const [ advisor, setAdvisor ] = useState(props.currentAdvisor)
+
+	useEffect(
+    () => {
+      setAdvisor(props.currentAdvisor)
+    },
+    [ props ]
+  )
+  // You can tell React to skip applying an effect if certain values haven’t changed between re-renders. [ props ]
 
 	const handleInputChange = event => {
 		const { name, value } = event.target
@@ -14,6 +22,12 @@ const EditAdvisorForm = props => {
 		<form
 			onSubmit={event => {
 				event.preventDefault()
+
+				if (!advisor.name ||
+						!advisor.researcharea ||
+						!advisor.maxpostgraduates ||
+						!advisor.maxundergraduates)
+				return
 
 				props.updateAdvisor(advisor.id, advisor)
 			}}
