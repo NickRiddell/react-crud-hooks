@@ -1,5 +1,8 @@
 import React from 'react'
 
+/*The ternary operation is used to map through the advisor data sent through and display
+the properties for each advisor, or display a message if there are no advisors*/
+
 const AdvisorTable = props => (
   <table>
     <thead>

@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react'
 
 const EditAdvisorForm = props => {
 	const [ advisor, setAdvisor ] = useState(props.currentAdvisor)
-
+/*The Effect Hook lets the EditUserForm component know the props have changed, which would
+have been done before with componentDidUpdate. In the Effect Hook, a callback function is
+created that updates the advisor state with the new prop thats being sent through. You can
+tell React to skip applying an effect if certain values haven’t changed between re-renders. [ props ]*/
 	useEffect(
     () => {
       setAdvisor(props.currentAdvisor)
     },
     [ props ]
   )
-  // You can tell React to skip applying an effect if certain values haven’t changed between re-renders. [ props ]
 
 	const handleInputChange = event => {
 		const { name, value } = event.target
