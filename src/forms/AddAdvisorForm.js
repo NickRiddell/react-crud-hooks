@@ -2,26 +2,26 @@ import React, { useState } from 'react'
 
 const AddAdvisorForm = props => {
 
-	/*Here I made some state, except this state is just temporary, for keeping
-	track of what’s currently in the form. I created an initial state with empty
-	values, and set the advisor state to the empty values. Having initial state
-	in a variable is useful, because after I submit the form, I can return it
-	to the initial, empty value.*/
+	/*Here some state, except this state is just temporary, for keeping track of
+	what’s currently in the form. Initial state is created with empty values, and
+	the advisor state is set to the empty values. Having initial state in a
+	variable is useful, as once the form is submitted, it can be returned it to
+	the initial, empty value.*/
 	const initialFormState = { id: null, name: '', researcharea: '', maxpostgraduates: '', maxundergraduates: '' }
 	const [ advisor, setAdvisor ] = useState(initialFormState)
 
 	/*This function updates the state within the form. Object destructuring allows
-	me to easily get the name (key) and value from the form. Then I set the advisor
-	much like I did on the App component, except this time using computed property
-	names to dynamically set the name (using [name]) and value.*/
+	for easy acces to the name (key) and value from the form. The advisor is then set
+	as before on the App component, except this time using computed property names to
+	dynamically set the name (using [name]) and value.*/
 	const handleInputChange = event => {
   const { name, value } = event.target
 
   setAdvisor({ ...advisor, [name]: value })
 }
-/*I added a small bit of validation to make sure empty values cannot be submitted,
-and sent the advisor through to the add function. I then use the setter to reset
-the form to its initial value after successful submission.*/
+/*Validation added to make sure empty values cannot be submitted, and sent the advisor
+through to the add function. The setter is then used to reset the form to its initial
+value after successful submission.*/
 	return (
 		<form
 			  onSubmit={event => {
